@@ -1,26 +1,26 @@
 import { Component } from "react";
 import ContactForm from "./ContactForm/ContactForm";
-// import ContactList from "./ContactList/ContactList";
+import ContactList from "./ContactList/ContactList";
 
-export class App extends Component {
+ class App extends Component {
   state = {
     contacts: [],
   };
 
-  formSubmitHandler = userData => {
-    return this.setState (prevState => ({
+  formSubmitHandler = (userData) => {
+     this.setState ((prevState) => ({
       contacts: [...prevState.contacts, userData],
     }))
   };
 
-  // deleteContact = id => {
-  //   // this.setState(prevState => ({
-  //   //   contacts: prevState.contacts.filter(item => item.id !== id)
-  //   // }));
-  // };
+  deleteContact = id => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(item => item.id !== id)
+    }));
+  };
   
   render() {
-    // const  contacts  = this.state.contacts;
+    const  contacts  = this.state.contacts;
 
     return (
       <div>
@@ -28,9 +28,12 @@ export class App extends Component {
         <ContactForm onSubmit={this.formSubmitHandler}/>
        
         <h2>Contacts</h2>
-       
+        <ContactList
+          contacts={contacts} 
+          onDeleteContact={this.deleteContact} />
       </div>
     );
   };
 };
 
+export default App;
