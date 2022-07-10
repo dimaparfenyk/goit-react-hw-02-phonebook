@@ -15,7 +15,7 @@ import ContactList from "./ContactList/ContactList";
 
   deleteContact = id => {
     this.setState(prevState => ({
-      contacts: prevState.contacts.filter(item => item.id !== id)
+      contacts: prevState.contacts.filter(contact => contact.id !== id)
     }));
   };
   
@@ -30,7 +30,8 @@ import ContactList from "./ContactList/ContactList";
         <h2>Contacts</h2>
         <ContactList
           contacts={contacts} 
-          onDeleteContact={this.deleteContact} />
+          onDeleteContact={this.deleteContact}
+          />
       </div>
     );
   };
